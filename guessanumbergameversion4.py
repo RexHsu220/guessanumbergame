@@ -1,21 +1,34 @@
-print('Guess a number game')
+print('猜數字遊戲')
 import random
-start = eval(input('Please enter the start of the range of the numbers: '))
-end = eval(input('Please enter the end of the range of the numbers: '))
+start = eval(input('請輸入範圍最小值: '))
+end = eval(input('請輸入範圍最大值: '))
 r = random.randint(start, end)
-i = eval(input('How many chances do you want to guess ?:　')) #chances left
+i = eval(input('你想要猜幾次 ?:　')) #chances left
+lnum = 0
 while i > 0:
 	i = i - 1
-	num = eval(input('Please enter a number between {0} to {1}: '.format(start, end)))	
+	num = eval(input('請輸入一個{0}到{1}之間的數字: '.format(start, end)))	
 	if num == r:
-		print('Congratulation !!!, You\'ve guessed the correct number !')
+		print('恭喜你，你猜對了 !')
 		break
 	else:
 		if i > 0:
-			print('%s is not the correct number !' % (num))
+			print('%s 不是正確的數字 !' % (num))
 			if num > r:
-				print('The number you guessed was to high ! You still have', i, 'chances.')
+				if num >= end:
+					i = 0
+					print('你是不是智障阿都提示過你了 %s 太高我她媽不給你玩了' % (lnum)) 
+				else:
+					end = num
+					lnum = num
+					print('你猜的數字太高了 ! 你還有', i, '次機會.')
 			elif num < r:
-				print('The number you guessed was to low ! You still have', i, 'chances.')
+				if num <= start:
+					i = 0
+					print('你是不是智障阿都提示過你了 %s 太低我她媽不給你玩了' % (lnum))
+				else:
+					start = num
+					lnum = num
+					print('你猜的數字太低了 ! 你還有', i, '次機會.')
 		else: 
-			print('No chances left !')
+			print('你沒有機會了小智障 !')
