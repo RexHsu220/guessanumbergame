@@ -3,7 +3,7 @@ import random
 start = eval(input('請輸入範圍最小值: '))
 end = eval(input('請輸入範圍最大值: '))
 r = random.randint(start, end)
-i = eval(input('你想要猜幾次 ?:　')) #chances left
+i = eval(input('你想要猜幾次 ?: ')) #chances left
 lnum = 0
 while i > 0:
 	i = i - 1
@@ -17,7 +17,7 @@ while i > 0:
 			if num > r:
 				if num >= end:
 					i = 0
-					print('你是不是智障阿都提示過你了 %s 太高我她媽不給你玩了' % (lnum)) 
+					print('你是不是智障阿都提示過你了 %s 太高你還猜 %s 我她媽不給你玩了' % (lnum, num)) 
 				else:
 					end = num
 					lnum = num
@@ -25,7 +25,7 @@ while i > 0:
 			elif num < r:
 				if num <= start:
 					i = 0
-					print('你是不是智障阿都提示過你了 %s 太低我她媽不給你玩了' % (lnum))
+					print('你是不是智障阿都提示過你了 %s 太低你還猜 %s 我她媽不給你玩了' % (lnum, num))
 				else:
 					start = num
 					lnum = num
